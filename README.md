@@ -1,4 +1,4 @@
-# Synthes2
+# Synthes
 
 ### How to start?
 
