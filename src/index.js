@@ -7,7 +7,7 @@ import renderer from './components/renderer.es6';
 
 ;(function(win){
 
-let Synthes = function(template = null, sandbox){
+let Synthes = function(template = null, sandbox = null){
 
 	let _template = template || null;
 
@@ -137,12 +137,17 @@ let Synthes = function(template = null, sandbox){
 };
 
 /*
-exporting to window or module..
 */
 
-if(win){ win['Synthes'] = Synthes; }
-else
-if(typeof module === 'object' && module.exports){ module.exports = Synthes; }
+if(win){
+	win['Synthes'] = Synthes;
+}
+else if(typeof define === 'function' && define.amd){
+	define([], function(){return Synthes;} );
+}
+else if(typeof module === 'object' && module.exports){
+	module.exports = Synthes;
+}
 
 
 })(window);

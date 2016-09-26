@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>synthes</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="../synthes.js"></script>
+</head>
+<body>
+<div id="parent"></div>
+<script type="text/javascript">
+
+var template = {
+	div: {
+		p: 'some text in p',
+		div: [
+			{
+				span: {
+					class: 'some span class',
+					content: 'some span text'
+				}
+				
+			},
+			{
+				hr: ''
+			},
+			{
+				img: {
+					src: '/'
+				}
+			}
+
+		]
+	}
+}
+
+var synthes = Synthes(template, document.getElementById('parent'));
+
+// document.body.appendChild(synthes.node);
+
+</script>
+</body>
+</html>

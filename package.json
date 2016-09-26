@@ -1,8 +1,8 @@
 {
   "name": "synthes",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JSON-DOM template renderer",
-  "main": "index.js",
+  "main": "synthes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
