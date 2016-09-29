@@ -25,22 +25,19 @@
         var r = function() {
             var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], n = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], t = e || null, r = null;
             n && 1 == n.nodeType ? r = n : "string" == typeof n && (r = document.querySelectorAll(n)[0]);
-            var o = (0, a["default"])(t), i = null, u = !1, l = {
+            var o = (0, a["default"])(t), i = !1, u = {
                 render: function() {
-                    return r && r.appendChild(o) && (u = !0), this;
-                },
-                data: function(e) {
-                    return i = e, this;
+                    return r && r.appendChild(o) && (i = !0), this;
                 },
                 bind: function(e) {
-                    return r = 1 == e.nodeType ? e : null, u && this.render(), this;
+                    return r = 1 == e.nodeType ? e : null, i && this.render(), this;
                 },
                 node: null,
                 string: null,
                 template: e,
                 isSynthes: !0
             };
-            return Object.defineProperty(l, "template", {
+            return Object.defineProperty(u, "template", {
                 set: function(e) {
                     t = e;
                     var n = (0, a["default"])(t);
@@ -50,32 +47,32 @@
                     return t;
                 },
                 configurable: !1
-            }), Object.defineProperty(l, "sandbox", {
+            }), Object.defineProperty(u, "sandbox", {
                 set: function(e) {
-                    r = 1 == e.nodeType ? e : null, o.remove(), u && this.render();
+                    r = 1 == e.nodeType ? e : null, o.remove(), i && this.render();
                 },
                 get: function() {
                     return r;
                 },
                 configurable: !1
-            }), Object.defineProperty(l, "node", {
+            }), Object.defineProperty(u, "node", {
                 set: function() {},
                 get: function() {
                     return o;
                 },
                 configurable: !1
-            }), Object.defineProperty(l, "string", {
+            }), Object.defineProperty(u, "string", {
                 set: function() {},
                 get: function() {
                     var e = document.createElement("div");
                     return e.appendChild(o.cloneNode(!0)), e.innerHTML;
                 },
                 configurable: !1
-            }), Object.defineProperty(l, "isSynthes", {
+            }), Object.defineProperty(u, "isSynthes", {
                 value: !0,
                 writable: !1,
                 configurable: !1
-            }), l;
+            }), u;
         };
         t ? t.Synthes = r : (o = [], i = function() {
             return r;
@@ -109,13 +106,13 @@
             }, r = Object.keys(e)[0], i = n(r);
             if ("string" == typeof e[r] || null == e[r]) return i.innerHTML = e[r] || "", i;
             if (e[r] instanceof Array) {
-                for (var a in e[r]) e[r][a].isRandr && e[r][a].node ? i.appendChild(e[r][a].node) : i.appendChild(t(e[r][a]));
+                for (var a in e[r]) e[r][a].isSynthes && e[r][a].node ? i.appendChild(e[r][a].node) : i.appendChild(t(e[r][a]));
                 return i;
             }
-            if (e[r] instanceof Object) for (var l in e[r]) "content" != l && (e[r][l] instanceof Object || e[r][l] instanceof Array ? i.appendChild(t(o({}, l, e[r][l]))) : "string" == typeof e[r][l] && (u["default"].indexOf(l) + 1 ? i.appendChild(t(o({}, l, e[r][l]))) : i.setAttribute(l, e[r][l])));
-            if (e[r].content instanceof Array) for (var d in e[r].content) e[r].content[d].isRandr && e[r].content[d].node ? i.appendChild(e[r].content[d].node) : i.appendChild(t(e[r].content[d])); else {
+            if (e[r] instanceof Object) for (var l in e[r]) "content" != l && (e[r][l] instanceof Object || e[r][l] instanceof Array ? e[r][l].isSynthes && e[r][l].node ? i.appendChild(e[r][l].node) : i.appendChild(t(o({}, l, e[r][l]))) : "string" == typeof e[r][l] && (u["default"].indexOf(l) + 1 ? i.appendChild(t(o({}, l, e[r][l]))) : i.setAttribute(l, e[r][l])));
+            if (e[r].content instanceof Array) for (var d in e[r].content) e[r].content[d].isSynthes && e[r].content[d].node ? i.appendChild(e[r].content[d].node) : i.appendChild(t(e[r].content[d])); else {
                 if (e[r].content instanceof Object) {
-                    if (e[r].content.isRandr && e[r].content.node) i.appendChild(e[r].content.node); else {
+                    if (e[r].content.isSynthes && e[r].content.node) i.appendChild(e[r].content.node); else {
                         var c = Object.keys(e[r].content)[0];
                         if (e[r].content[c] instanceof Object) for (var f in e[r].content) i.appendChild(t(o({}, f, e[r].content[f]))); else i.appendChild(t(e[r].content));
                     }

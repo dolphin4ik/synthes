@@ -46,12 +46,12 @@ let Synthes = function(template = null, sandbox = null){
 			return this;
 
 		},
-		data(v){
+		// data(v){
 
-			//using data
-			_values = v;
-			return this;
-		},
+		// 	//using data
+		// 	_values = v;
+		// 	return this;
+		// },
 		bind(sandbox){
 
 			_sandbox = (sandbox.nodeType == 1)? sandbox : null;

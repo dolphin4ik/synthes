@@ -32,7 +32,7 @@ const renderer = function(template = null){
 
 			for(let k in template[TAG]){
 
-				if(template[TAG][k].isRandr && template[TAG][k].node){
+				if(template[TAG][k].isSynthes && template[TAG][k].node){
 
 					node.appendChild(template[TAG][k].node);
 
@@ -58,7 +58,15 @@ const renderer = function(template = null){
 					//Nested children
 					if((template[TAG][k] instanceof Object) || (template[TAG][k] instanceof Array)){
 
-						node.appendChild(createNode({ [k]: template[TAG][k] })); //some magic ;)
+						if(template[TAG][k].isSynthes && template[TAG][k].node){
+
+							node.appendChild(template[TAG][k].node); //if its Synthes object
+
+						}else{
+
+							node.appendChild(createNode({ [k]: template[TAG][k] })); //some magic ;)
+
+						}
 
 					//child or attribute
 					}else if(typeof template[TAG][k] == 'string'){
@@ -90,7 +98,7 @@ const renderer = function(template = null){
 
 			for(let k in template[TAG]['content']){
 
-				if(template[TAG]['content'][k].isRandr && template[TAG]['content'][k].node){
+				if(template[TAG]['content'][k].isSynthes && template[TAG]['content'][k].node){
 
 					node.appendChild(template[TAG]['content'][k].node);
 
@@ -110,9 +118,9 @@ const renderer = function(template = null){
 		if(template[TAG]['content'] instanceof Object){
 
 			/*
-			if object in content is Randr object
+			if object in content is Synthes object
 			*/
-			if(template[TAG]['content'].isRandr && template[TAG]['content'].node){
+			if(template[TAG]['content'].isSynthes && template[TAG]['content'].node){
 
 				node.appendChild(template[TAG]['content'].node);
 
