@@ -25,19 +25,34 @@ let Synthes = function(template = null, sandbox = null){
 
 	let _node = renderer(_template);
 
+	let _softDeleteOriginal = (_node.style.display.length == 0)? 'block' : _node.style.display;
+
+	let _softDelete = false;
+
 	let _values = null;
 
 	let _isRendered = false;
+
+	let WRAPPER = document.createElement('wrapper');
 
 	let synthes = {
 
 		render(){
 
-			if(_sandbox){
+			if(_sandbox && _node){
 
-				if(_sandbox.appendChild(_node)){
+				if(!_softDelete){
 
-					_isRendered = true;
+					if(_sandbox.appendChild(_node)){
+
+						_isRendered = true;
+
+					}
+
+				}else{
+
+					this.node.style.display = _softDeleteOriginal;
+					_softDelete = false;
 
 				}
 
@@ -46,18 +61,27 @@ let Synthes = function(template = null, sandbox = null){
 			return this;
 
 		},
-		// data(v){
-
-		// 	//using data
-		// 	_values = v;
-		// 	return this;
-		// },
 		bind(sandbox){
 
 			_sandbox = (sandbox.nodeType == 1)? sandbox : null;
 			if(_isRendered){
 				this.render();
 			}
+			return this;
+
+		},
+		delete(soft = false){
+
+			if(!soft){
+				if(this.node){
+					this.node.style.display = 'none';
+					_softDelete = true;
+				}
+			}else{
+				this.node.remove();
+				_softDelete = false;
+			}
+
 			return this;
 
 		},
@@ -115,10 +139,12 @@ let Synthes = function(template = null, sandbox = null){
 		set(){},
 		get(){
 
-			let a = document.createElement('div');
-			a.appendChild(_node.cloneNode(true));
-			return a.innerHTML;
-
+			if(_node){
+				WRAPPER.appendChild(_node.cloneNode(true));
+				return WRAPPER.innerHTML;
+			}else{
+				return null;
+			}
 		},
 		configurable: false
 
@@ -139,14 +165,15 @@ let Synthes = function(template = null, sandbox = null){
 /*
 */
 
-if(win){
-	win['Synthes'] = Synthes;
-}
-else if(typeof define === 'function' && define.amd){
+
+if(typeof define === 'function' && define.amd){
 	define([], function(){return Synthes;} );
 }
 else if(typeof module === 'object' && module.exports){
 	module.exports = Synthes;
+}
+if(win){
+	win['Synthes'] = Synthes;
 }
 
 

@@ -1,120 +1,125 @@
 !function(e) {
-    function n(r) {
-        if (t[r]) return t[r].exports;
-        var o = t[r] = {
+    function t(r) {
+        if (n[r]) return n[r].exports;
+        var o = n[r] = {
             exports: {},
             id: r,
             loaded: !1
         };
-        return e[r].call(o.exports, o, o.exports, n), o.loaded = !0, o.exports;
+        return e[r].call(o.exports, o, o.exports, t), o.loaded = !0, o.exports;
     }
-    var t = {};
-    return n.m = e, n.c = t, n.p = "", n(0);
-}([ function(e, n, t) {
+    var n = {};
+    return t.m = e, t.c = n, t.p = "", t(0);
+}([ function(e, t, n) {
     function r(e) {
         return e && e.__esModule ? e : {
             "default": e
         };
     }
-    var o, i, u = ("function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+    var o, i, l = ("function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
         return typeof e;
     } : function(e) {
         return e && "function" == typeof Symbol && e.constructor === Symbol ? "symbol" : typeof e;
-    }, t(1)), a = r(u);
-    !function(t) {
+    }, n(1)), d = r(l);
+    !function(n) {
         var r = function() {
-            var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], n = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], t = e || null, r = null;
-            n && 1 == n.nodeType ? r = n : "string" == typeof n && (r = document.querySelectorAll(n)[0]);
-            var o = (0, a["default"])(t), i = !1, u = {
+            var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], t = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], n = e || null, r = null;
+            t && 1 == t.nodeType ? r = t : "string" == typeof t && (r = document.querySelectorAll(t)[0]);
+            var o = (0, d["default"])(n), i = 0 == o.style.display.length ? "block" : o.style.display, l = !1, a = !1, u = document.createElement("wrapper"), c = {
                 render: function() {
-                    return r && r.appendChild(o) && (i = !0), this;
+                    return r && o && (l ? (this.node.style.display = i, l = !1) : r.appendChild(o) && (a = !0)), 
+                    this;
                 },
                 bind: function(e) {
-                    return r = 1 == e.nodeType ? e : null, i && this.render(), this;
+                    return r = 1 == e.nodeType ? e : null, a && this.render(), this;
+                },
+                "delete": function() {
+                    var e = !(arguments.length <= 0 || void 0 === arguments[0]) && arguments[0];
+                    return e ? (this.node.remove(), l = !1) : this.node && (this.node.style.display = "none", 
+                    l = !0), this;
                 },
                 node: null,
                 string: null,
                 template: e,
                 isSynthes: !0
             };
-            return Object.defineProperty(u, "template", {
+            return Object.defineProperty(c, "template", {
                 set: function(e) {
-                    t = e;
-                    var n = (0, a["default"])(t);
-                    o.parentNode.insertBefore(n, o), o.remove(), o = n, n = null;
+                    n = e;
+                    var t = (0, d["default"])(n);
+                    o.parentNode.insertBefore(t, o), o.remove(), o = t, t = null;
                 },
                 get: function() {
-                    return t;
+                    return n;
                 },
                 configurable: !1
-            }), Object.defineProperty(u, "sandbox", {
+            }), Object.defineProperty(c, "sandbox", {
                 set: function(e) {
-                    r = 1 == e.nodeType ? e : null, o.remove(), i && this.render();
+                    r = 1 == e.nodeType ? e : null, o.remove(), a && this.render();
                 },
                 get: function() {
                     return r;
                 },
                 configurable: !1
-            }), Object.defineProperty(u, "node", {
+            }), Object.defineProperty(c, "node", {
                 set: function() {},
                 get: function() {
                     return o;
                 },
                 configurable: !1
-            }), Object.defineProperty(u, "string", {
+            }), Object.defineProperty(c, "string", {
                 set: function() {},
                 get: function() {
-                    var e = document.createElement("div");
-                    return e.appendChild(o.cloneNode(!0)), e.innerHTML;
+                    return o ? (u.appendChild(o.cloneNode(!0)), u.innerHTML) : null;
                 },
                 configurable: !1
-            }), Object.defineProperty(u, "isSynthes", {
+            }), Object.defineProperty(c, "isSynthes", {
                 value: !0,
                 writable: !1,
                 configurable: !1
-            }), u;
+            }), c;
         };
-        t ? t.Synthes = r : (o = [], i = function() {
+        o = [], i = function() {
             return r;
-        }.apply(n, o), !(void 0 !== i && (e.exports = i)));
+        }.apply(t, o), !(void 0 !== i && (e.exports = i)), n && (n.Synthes = r);
     }(window);
-}, function(e, n, t) {
+}, function(e, t, n) {
     "use strict";
     function r(e) {
         return e && e.__esModule ? e : {
             "default": e
         };
     }
-    function o(e, n, t) {
-        return n in e ? Object.defineProperty(e, n, {
-            value: t,
+    function o(e, t, n) {
+        return t in e ? Object.defineProperty(e, t, {
+            value: n,
             enumerable: !0,
             configurable: !0,
             writable: !0
-        }) : e[n] = t, e;
+        }) : e[t] = n, e;
     }
-    Object.defineProperty(n, "__esModule", {
+    Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var i = t(2), u = r(i), a = function() {
+    var i = n(2), l = r(i), d = function() {
         var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0];
         if (!e) return null;
-        var n = function t(e) {
-            var n = function() {
+        var t = function n(e) {
+            var t = function() {
                 var e = arguments.length <= 0 || void 0 === arguments[0] ? "span" : arguments[0];
                 return document.createElement(e);
-            }, r = Object.keys(e)[0], i = n(r);
+            }, r = Object.keys(e)[0], i = t(r);
             if ("string" == typeof e[r] || null == e[r]) return i.innerHTML = e[r] || "", i;
             if (e[r] instanceof Array) {
-                for (var a in e[r]) e[r][a].isSynthes && e[r][a].node ? i.appendChild(e[r][a].node) : i.appendChild(t(e[r][a]));
+                for (var d in e[r]) e[r][d].isSynthes && e[r][d].node ? i.appendChild(e[r][d].node) : i.appendChild(n(e[r][d]));
                 return i;
             }
-            if (e[r] instanceof Object) for (var l in e[r]) "content" != l && (e[r][l] instanceof Object || e[r][l] instanceof Array ? e[r][l].isSynthes && e[r][l].node ? i.appendChild(e[r][l].node) : i.appendChild(t(o({}, l, e[r][l]))) : "string" == typeof e[r][l] && (u["default"].indexOf(l) + 1 ? i.appendChild(t(o({}, l, e[r][l]))) : i.setAttribute(l, e[r][l])));
-            if (e[r].content instanceof Array) for (var d in e[r].content) e[r].content[d].isSynthes && e[r].content[d].node ? i.appendChild(e[r].content[d].node) : i.appendChild(t(e[r].content[d])); else {
+            if (e[r] instanceof Object) for (var a in e[r]) "content" != a && (e[r][a] instanceof Object || e[r][a] instanceof Array ? e[r][a].isSynthes && e[r][a].node ? i.appendChild(e[r][a].node) : i.appendChild(n(o({}, a, e[r][a]))) : "string" == typeof e[r][a] && (l["default"].indexOf(a) + 1 ? i.appendChild(n(o({}, a, e[r][a]))) : i.setAttribute(a, e[r][a])));
+            if (e[r].content instanceof Array) for (var u in e[r].content) e[r].content[u].isSynthes && e[r].content[u].node ? i.appendChild(e[r].content[u].node) : i.appendChild(n(e[r].content[u])); else {
                 if (e[r].content instanceof Object) {
                     if (e[r].content.isSynthes && e[r].content.node) i.appendChild(e[r].content.node); else {
                         var c = Object.keys(e[r].content)[0];
-                        if (e[r].content[c] instanceof Object) for (var f in e[r].content) i.appendChild(t(o({}, f, e[r].content[f]))); else i.appendChild(t(e[r].content));
+                        if (e[r].content[c] instanceof Object) for (var s in e[r].content) i.appendChild(n(o({}, s, e[r].content[s]))); else i.appendChild(n(e[r].content));
                     }
                     return i;
                 }
@@ -122,15 +127,14 @@
             }
             return i;
         };
-        return n(e);
+        return t(e);
     };
-    n["default"] = a, e.exports = n["default"];
-}, function(e, n) {
+    t["default"] = d, e.exports = t["default"];
+}, function(e, t) {
     "use strict";
-    Object.defineProperty(n, "__esModule", {
+    Object.defineProperty(t, "__esModule", {
         value: !0
     });
-    var t = [ "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "datalist", "dd", "del", "details", "dfn", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "map", "mark", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr" ];
-    n["default"] = t, e.exports = n["default"];
+    var n = [ "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "datalist", "dd", "del", "details", "dfn", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "map", "mark", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr" ];
+    t["default"] = n, e.exports = t["default"];
 } ]);
-//# sourceMappingURL=synthes.js.map

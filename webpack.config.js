@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = [
     {
-        devtool: 'source-map',
+        // devtool: 'source-map',
         entry: './src/index.js',
         output: {
             filename: 'synthes.js',
