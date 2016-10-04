@@ -1,6 +1,6 @@
 {
   "name": "synthes",
-  "version": "0.1.9",
+  "version": "0.2.1",
   "description": "JSON-DOM template renderer",
   "main": "synthes.js",
   "scripts": {
