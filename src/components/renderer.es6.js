@@ -4,7 +4,7 @@ import TAGS from './tags';
 
 const renderer = function(template = null){
 
-	if(!template) return null;
+	if(typeof template != 'object') return null;
 
 	const createNode = function(template){
 

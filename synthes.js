@@ -1,140 +1,155 @@
 !function(e) {
-    function t(r) {
-        if (n[r]) return n[r].exports;
-        var o = n[r] = {
+    function n(o) {
+        if (t[o]) return t[o].exports;
+        var r = t[o] = {
             exports: {},
-            id: r,
+            id: o,
             loaded: !1
         };
-        return e[r].call(o.exports, o, o.exports, t), o.loaded = !0, o.exports;
+        return e[o].call(r.exports, r, r.exports, n), r.loaded = !0, r.exports;
     }
-    var n = {};
-    return t.m = e, t.c = n, t.p = "", t(0);
-}([ function(e, t, n) {
-    function r(e) {
+    var t = {};
+    return n.m = e, n.c = t, n.p = "", n(0);
+}([ function(e, n, t) {
+    function o(e) {
         return e && e.__esModule ? e : {
             "default": e
         };
     }
-    var o, i, l = ("function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+    var r, i, d = ("function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
         return typeof e;
     } : function(e) {
         return e && "function" == typeof Symbol && e.constructor === Symbol ? "symbol" : typeof e;
-    }, n(1)), d = r(l);
-    !function(n) {
-        var r = function() {
-            var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], t = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], n = e || null, r = null;
-            t && 1 == t.nodeType ? r = t : "string" == typeof t && (r = document.querySelectorAll(t)[0]);
-            var o = (0, d["default"])(n), i = 0 == o.style.display.length ? "block" : o.style.display, l = !1, a = !1, u = document.createElement("wrapper"), c = {
+    }, t(1)), l = o(d);
+    !function(t) {
+        var o = function() {
+            var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], n = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], t = {
+                template: e || null,
+                sandbox: n && 1 == n.nodeType ? n : "string" == typeof n ? document.querySelectorAll(n)[0] : null,
+                node: (0, l["default"])(e),
+                WRAPPER: document.createElement("wrapper"),
+                string: null,
+                softDelete: !1,
+                isRendered: !1
+            };
+            t.softDeleteDisplay = t.node ? 0 == t.node.style.display.length ? "block" : t.node.style.display : "block", 
+            t.node && (t.WRAPPER.appendChild(t.node.cloneNode(!0)), t.string = t.WRAPPER.innerHTML);
+            var o = {
                 render: function() {
-                    return r && o && (l ? (this.node.style.display = i, l = !1) : r.appendChild(o) && (a = !0)), 
-                    this;
+                    return t.sandbox && t.node && (t.softDelete ? (this.node.style.display = t.softDeleteDisplay, 
+                    t.softDelete = !1) : t.sandbox.appendChild(t.node) && (t.isRendered = !0)), this;
                 },
                 bind: function(e) {
-                    return r = 1 == e.nodeType ? e : null, a && this.render(), this;
+                    return t.sandbox = 1 == e.nodeType ? e : null, t.isRendered && this.render(), this;
                 },
                 "delete": function() {
                     var e = !(arguments.length <= 0 || void 0 === arguments[0]) && arguments[0];
-                    return e ? (this.node.remove(), l = !1) : this.node && (this.node.style.display = "none", 
-                    l = !0), this;
+                    return e ? (this.node.remove(), t.softDelete = !1) : this.node && (this.node.style.display = "none", 
+                    t.softDelete = !0), this;
                 },
                 node: null,
                 string: null,
-                template: e,
+                template: t.template,
                 isSynthes: !0
             };
-            return Object.defineProperty(c, "template", {
+            return Object.defineProperty(o, "template", {
                 set: function(e) {
-                    n = e;
-                    var t = (0, d["default"])(n);
-                    o.parentNode.insertBefore(t, o), o.remove(), o = t, t = null;
+                    t.template = e;
+                    var n = (0, l["default"])(t.template);
+                    t.isRendered && (n && t.node.parentNode.insertBefore(n, t.node), t.node.remove(), 
+                    t.isRendered = !1), t.node = n, n = null, t.WRAPPER.innerHTML = "", t.node ? (t.WRAPPER.appendChild(t.node.cloneNode(!0)), 
+                    t.string = t.WRAPPER.innerHTML) : t.string = null;
                 },
                 get: function() {
-                    return n;
+                    return t.template;
                 },
                 configurable: !1
-            }), Object.defineProperty(c, "sandbox", {
+            }), Object.defineProperty(o, "sandbox", {
                 set: function(e) {
-                    r = 1 == e.nodeType ? e : null, o.remove(), a && this.render();
+                    t.sandbox = 1 == e.nodeType ? e : null, t.node.remove(), t.isRendered && this.render();
                 },
                 get: function() {
-                    return r;
+                    return t.sandbox;
                 },
                 configurable: !1
-            }), Object.defineProperty(c, "node", {
+            }), Object.defineProperty(o, "node", {
                 set: function() {},
                 get: function() {
-                    return o;
+                    return t.node;
                 },
                 configurable: !1
-            }), Object.defineProperty(c, "string", {
+            }), Object.defineProperty(o, "string", {
                 set: function() {},
                 get: function() {
-                    return o ? (u.appendChild(o.cloneNode(!0)), u.innerHTML) : null;
+                    return t.string;
                 },
                 configurable: !1
-            }), Object.defineProperty(c, "isSynthes", {
+            }), Object.defineProperty(o, "isSynthes", {
                 value: !0,
                 writable: !1,
                 configurable: !1
-            }), c;
+            }), o;
         };
-        o = [], i = function() {
-            return r;
-        }.apply(t, o), !(void 0 !== i && (e.exports = i)), n && (n.Synthes = r);
+        r = [], i = function() {
+            return o;
+        }.apply(n, r), !(void 0 !== i && (e.exports = i)), t && (t.Synthes = o);
     }(window);
-}, function(e, t, n) {
+}, function(e, n, t) {
     "use strict";
-    function r(e) {
+    function o(e) {
         return e && e.__esModule ? e : {
             "default": e
         };
     }
-    function o(e, t, n) {
-        return t in e ? Object.defineProperty(e, t, {
-            value: n,
+    function r(e, n, t) {
+        return n in e ? Object.defineProperty(e, n, {
+            value: t,
             enumerable: !0,
             configurable: !0,
             writable: !0
-        }) : e[t] = n, e;
+        }) : e[n] = t, e;
     }
-    Object.defineProperty(t, "__esModule", {
+    Object.defineProperty(n, "__esModule", {
         value: !0
     });
-    var i = n(2), l = r(i), d = function() {
+    var i = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+        return typeof e;
+    } : function(e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol ? "symbol" : typeof e;
+    }, d = t(2), l = o(d), a = function() {
         var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0];
-        if (!e) return null;
-        var t = function n(e) {
-            var t = function() {
+        if ("object" != ("undefined" == typeof e ? "undefined" : i(e))) return null;
+        var n = function t(e) {
+            var n = function() {
                 var e = arguments.length <= 0 || void 0 === arguments[0] ? "span" : arguments[0];
                 return document.createElement(e);
-            }, r = Object.keys(e)[0], i = t(r);
-            if ("string" == typeof e[r] || null == e[r]) return i.innerHTML = e[r] || "", i;
-            if (e[r] instanceof Array) {
-                for (var d in e[r]) e[r][d].isSynthes && e[r][d].node ? i.appendChild(e[r][d].node) : i.appendChild(n(e[r][d]));
+            }, o = Object.keys(e)[0], i = n(o);
+            if ("string" == typeof e[o] || null == e[o]) return i.innerHTML = e[o] || "", i;
+            if (e[o] instanceof Array) {
+                for (var d in e[o]) e[o][d].isSynthes && e[o][d].node ? i.appendChild(e[o][d].node) : i.appendChild(t(e[o][d]));
                 return i;
             }
-            if (e[r] instanceof Object) for (var a in e[r]) "content" != a && (e[r][a] instanceof Object || e[r][a] instanceof Array ? e[r][a].isSynthes && e[r][a].node ? i.appendChild(e[r][a].node) : i.appendChild(n(o({}, a, e[r][a]))) : "string" == typeof e[r][a] && (l["default"].indexOf(a) + 1 ? i.appendChild(n(o({}, a, e[r][a]))) : i.setAttribute(a, e[r][a])));
-            if (e[r].content instanceof Array) for (var u in e[r].content) e[r].content[u].isSynthes && e[r].content[u].node ? i.appendChild(e[r].content[u].node) : i.appendChild(n(e[r].content[u])); else {
-                if (e[r].content instanceof Object) {
-                    if (e[r].content.isSynthes && e[r].content.node) i.appendChild(e[r].content.node); else {
-                        var c = Object.keys(e[r].content)[0];
-                        if (e[r].content[c] instanceof Object) for (var s in e[r].content) i.appendChild(n(o({}, s, e[r].content[s]))); else i.appendChild(n(e[r].content));
+            if (e[o] instanceof Object) for (var a in e[o]) "content" != a && (e[o][a] instanceof Object || e[o][a] instanceof Array ? e[o][a].isSynthes && e[o][a].node ? i.appendChild(e[o][a].node) : i.appendChild(t(r({}, a, e[o][a]))) : "string" == typeof e[o][a] && (l["default"].indexOf(a) + 1 ? i.appendChild(t(r({}, a, e[o][a]))) : i.setAttribute(a, e[o][a])));
+            if (e[o].content instanceof Array) for (var s in e[o].content) e[o].content[s].isSynthes && e[o].content[s].node ? i.appendChild(e[o].content[s].node) : i.appendChild(t(e[o].content[s])); else {
+                if (e[o].content instanceof Object) {
+                    if (e[o].content.isSynthes && e[o].content.node) i.appendChild(e[o].content.node); else {
+                        var u = Object.keys(e[o].content)[0];
+                        if (e[o].content[u] instanceof Object) for (var c in e[o].content) i.appendChild(t(r({}, c, e[o].content[c]))); else i.appendChild(t(e[o].content));
                     }
                     return i;
                 }
-                "string" == typeof e[r].content && (i.innerHTML = e[r].content);
+                "string" == typeof e[o].content && (i.innerHTML = e[o].content);
             }
             return i;
         };
-        return t(e);
+        return n(e);
     };
-    t["default"] = d, e.exports = t["default"];
-}, function(e, t) {
+    n["default"] = a, e.exports = n["default"];
+}, function(e, n) {
     "use strict";
-    Object.defineProperty(t, "__esModule", {
+    Object.defineProperty(n, "__esModule", {
         value: !0
     });
-    var n = [ "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "datalist", "dd", "del", "details", "dfn", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "map", "mark", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr" ];
-    t["default"] = n, e.exports = t["default"];
+    var t = [ "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "datalist", "dd", "del", "details", "dfn", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "map", "mark", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr" ];
+    n["default"] = t, e.exports = n["default"];
 } ]);
