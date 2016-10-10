@@ -9,6 +9,8 @@ module.exports = [
         entry: './src/index.js',
         output: {
             filename: 'synthes.js',
+            libraryTarget: 'umd',
+            library: 'Synthes'
         },
         module: {
             loaders: [

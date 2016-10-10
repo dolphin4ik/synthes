@@ -5,14 +5,12 @@ author: denyzhirkov@yandex.ru, @dolphin4ik
 
 import renderer from './components/renderer.es6';
 
-;(function(win){
-
 let Synthes = function(template = null, sandbox = null){
 
 	const SHADOW = {
 		template: template || null,
 		sandbox: ((sandbox && sandbox.nodeType == 1)? sandbox : (typeof sandbox == 'string')? document.querySelectorAll(sandbox)[0] : null),
-		node: renderer(template),
+		node: ((template)? renderer(template) : null),
 		WRAPPER: document.createElement('wrapper'),
 		string: null,
 		softDelete: false,
@@ -21,8 +19,11 @@ let Synthes = function(template = null, sandbox = null){
 
 	SHADOW.softDeleteDisplay = (SHADOW.node)?((SHADOW.node.style.display.length == 0)? 'block' : SHADOW.node.style.display): 'block';
 	if(SHADOW.node){
+
 		SHADOW.WRAPPER.appendChild(SHADOW.node.cloneNode(true));
+
 		SHADOW.string = SHADOW.WRAPPER.innerHTML;
+
 	};
 
 	let synthes = {
@@ -53,7 +54,7 @@ let Synthes = function(template = null, sandbox = null){
 		},
 		bind(sandbox){
 
-			SHADOW.sandbox = (sandbox.nodeType == 1)? sandbox : null;
+			SHADOW.sandbox = (sandbox && sandbox.nodeType == 1)? sandbox : null;
 			if(SHADOW.isRendered){
 				this.render();
 			}
@@ -156,19 +157,4 @@ let Synthes = function(template = null, sandbox = null){
 
 };
 
-/*
-*/
-
-
-if(typeof define === 'function' && define.amd){
-	define([], function(){return Synthes;} );
-}
-else if(typeof module === 'object' && module.exports){
-	module.exports = Synthes;
-}
-if(win){
-	win['Synthes'] = Synthes;
-}
-
-
-})(window);
+export default Synthes;

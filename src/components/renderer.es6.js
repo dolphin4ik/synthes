@@ -6,7 +6,7 @@ const renderer = function(template = null){
 
 	if(typeof template != 'object') return null;
 
-	const createNode = function(template){
+	const createNode = function(template = null){
 
 		const n = (node = 'span') => document.createElement(node);
 		

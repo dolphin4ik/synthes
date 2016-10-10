@@ -3,7 +3,7 @@
 ### How to start?
 
 ```
-npm i synthes -g --save
+npm i synthes --save
 ```
 
 ```javascript
