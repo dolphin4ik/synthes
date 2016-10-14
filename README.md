@@ -7,11 +7,11 @@ npm i synthes --save
 ```
 
 ```javascript
-import Synthes from 'synthes';
+import Synthes from './synthes';
 
 or
 
-let Synthes = require('synthes');
+let Synthes = require('./synthes');
 
 or
 

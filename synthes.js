@@ -24,16 +24,10 @@
             value: !0
         });
         var r = t(1), i = o(r), d = function() {
-            var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], n = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], t = {
-                template: e || null,
-                sandbox: n && 1 == n.nodeType ? n : "string" == typeof n ? document.querySelectorAll(n)[0] : null,
-                node: e ? (0, i["default"])(e) : null,
-                WRAPPER: document.createElement("wrapper"),
-                string: null,
-                softDelete: !1,
-                isRendered: !1
-            };
-            t.softDeleteDisplay = t.node ? 0 == t.node.style.display.length ? "block" : t.node.style.display : "block", 
+            var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], n = arguments.length <= 1 || void 0 === arguments[1] ? null : arguments[1], t = {};
+            t.template = e, t.sandbox = n && 1 == n.nodeType ? n : "string" == typeof n ? document.querySelectorAll(n)[0] : null, 
+            t.node = e ? (0, i["default"])(e) : null, t.WRAPPER = document.createElement("wrapper"), 
+            t.string = null, t.softDelete = !1, t.isRendered = !1, t.softDeleteDisplay = t.node ? 0 == t.node.style.display.length ? "block" : t.node.style.display : "block", 
             t.node && (t.WRAPPER.appendChild(t.node.cloneNode(!0)), t.string = t.WRAPPER.innerHTML);
             var o = {
                 render: function() {
@@ -44,10 +38,10 @@
                     return t.sandbox = e && 1 == e.nodeType ? e : null, t.isRendered && this.render(), 
                     this;
                 },
-                "delete": function() {
+                remove: function() {
                     var e = !(arguments.length <= 0 || void 0 === arguments[0]) && arguments[0];
-                    return e ? (this.node.remove(), t.softDelete = !1) : this.node && (this.node.style.display = "none", 
-                    t.softDelete = !0), this;
+                    return e ? this.node && (this.node.style.display = "none", t.softDelete = !0) : (this.node.remove(), 
+                    t.softDelete = !1), this;
                 },
                 node: null,
                 string: null,

@@ -7,17 +7,18 @@ import renderer from './components/renderer.es6';
 
 let Synthes = function(template = null, sandbox = null){
 
-	const SHADOW = {
-		template: template || null,
-		sandbox: ((sandbox && sandbox.nodeType == 1)? sandbox : (typeof sandbox == 'string')? document.querySelectorAll(sandbox)[0] : null),
-		node: ((template)? renderer(template) : null),
-		WRAPPER: document.createElement('wrapper'),
-		string: null,
-		softDelete: false,
-		isRendered: false
-	};
+	const SHADOW = {};
+
+	SHADOW.template = template;
+	SHADOW.sandbox = ((sandbox && sandbox.nodeType == 1)? sandbox : (typeof sandbox == 'string')? document.querySelectorAll(sandbox)[0] : null);
+	SHADOW.node = ((template)? renderer(template) : null);
+	SHADOW.WRAPPER = document.createElement('wrapper');
+	SHADOW.string = null;
+	SHADOW.softDelete = false;
+	SHADOW.isRendered = false;
 
 	SHADOW.softDeleteDisplay = (SHADOW.node)?((SHADOW.node.style.display.length == 0)? 'block' : SHADOW.node.style.display): 'block';
+	
 	if(SHADOW.node){
 
 		SHADOW.WRAPPER.appendChild(SHADOW.node.cloneNode(true));
@@ -61,9 +62,9 @@ let Synthes = function(template = null, sandbox = null){
 			return this;
 
 		},
-		delete(soft = false){
+		remove(soft = false){
 
-			if(!soft){
+			if(soft){
 				if(this.node){
 					this.node.style.display = 'none';
 					SHADOW.softDelete = true;
