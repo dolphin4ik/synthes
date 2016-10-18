@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>synthes test</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="../synthes.js"></script>
+</head>
+<body>
+go to console pls, F12
+<div id="parent"></div>
+<script type="text/javascript">
+
+var templates = [
+	{
+		'type': 'node : "string content"',
+		'template': { 'div': 'some string content' },
+		'result': '<div>some string content</div>'
+	},
+
+	{
+		'type': 'node : [child, child..]',
+		'template': {
+			'div': [ {'span':'span1'}, {'span':'span2'} ]
+		},
+		'result': '<div><span>span1</span><span>span2</span></div>'
+	},
+
+	{
+		'type': 'node : {attr:"", node:{}, node:[], node:""}',
+		'template': {
+			'div': {
+				'class': 'alfa',
+				'div': { 'span': 'alfa span' },
+				'ul': [
+					{ 'li': 'li 1' },
+					{ 'li': 'li 2' }
+				],
+				'p': 'some p text'
+			}
+		},
+		'result': '<div class="alfa"><div><span>alfa span</span></div><ul><li>li 1</li><li>li 2</li></ul><p>some p text</p></div>'
+	},
+
+	{
+		'type': 'node : { content: [] }',
+		'template': {
+			'div': {
+				'content': [
+					{'span':'span1'},
+					{'span':'span2'}
+				]
+			}
+		},
+		'result': '<div><span>span1</span><span>span2</span></div>'
+	},
+
+	{
+		'type': 'node : { content: {} }',
+		'template': {
+			'div': {
+				'content': { 'span':'span1' },
+			}
+		},
+		'result': '<div><span>span1</span></div>'
+	},
+
+	{
+		'type': 'node : { content: Synthes }',
+		'template': {
+			'div': {
+				'content': Synthes({ 'span': 'synthes span' }),
+			}
+		},
+		'result': '<div><span>synthes span</span></div>'
+	},
+
+	{
+		'type': 'node : { foo: Synthes, bar: Synthes }',
+		'template': {
+			'div': {
+				'foo': Synthes({ 'span': 'foo' }),
+				'bar': Synthes({ 'span': 'bar' })
+			}
+		},
+		'result': '<div><span>foo</span><span>bar</span></div>'
+	}
+
+
+]
+
+
+templates.forEach(function(item, t){
+
+	var synthes = Synthes(templates[t].template);
+
+	if(synthes.string != templates[t].result){
+		console.warn('error! -> ', templates[t].type);
+	}else{
+		console.log('passed -> ', templates[t].type);
+	}
+
+});
+
+
+</script>
+</body>
+</html>

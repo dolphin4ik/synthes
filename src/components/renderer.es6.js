@@ -47,7 +47,7 @@ const renderer = function(template = null){
 			return node;
 
 		/*
-		trying to make node from {node:{ attr:'',.. child:{},.. child:[],.. child:'' }} template
+		trying to make node from {node:{ attr:'',.. node:{},.. node:[],.. node:'' }} template
 		*/
 		}else if(template[TAG] instanceof Object){
 
@@ -92,71 +92,78 @@ const renderer = function(template = null){
 		}
 
 		/*
-		trying to make content if ARRAY
+		if exist "content"
 		*/
-		if(template[TAG]['content'] instanceof Array){
-
-			for(let k in template[TAG]['content']){
-
-				if(template[TAG]['content'][k].isSynthes && template[TAG]['content'][k].node){
-
-					node.appendChild(template[TAG]['content'][k].node);
-
-				}else{
-
-					node.appendChild(createNode(template[TAG]['content'][k]));
-
-				}
-
-			}
-
-		}else
-
-		/*
-		trying to make content if OBJECT
-		*/
-		if(template[TAG]['content'] instanceof Object){
+		if(template[TAG]['content']){
 
 			/*
-			if object in content is Synthes object
+			trying to make content if ARRAY
 			*/
-			if(template[TAG]['content'].isSynthes && template[TAG]['content'].node){
+			if(template[TAG]['content'] instanceof Array){
 
-				node.appendChild(template[TAG]['content'].node);
+				for(let k in template[TAG]['content']){
 
-			}else{
+					if(template[TAG]['content'][k].isSynthes && template[TAG]['content'][k].node){
 
-				/*
-				if object in content is assoc-array template
-				*/
-				let n = Object.keys(template[TAG]['content'])[0];
+						node.appendChild(template[TAG]['content'][k].node);
 
-				if(template[TAG]['content'][n] instanceof Object){
+					}else{
 
-					for(let t in template[TAG]['content']){
-
-						node.appendChild(createNode({ [t]: template[TAG]['content'][t] })); //some magic ;)
+						node.appendChild(createNode(template[TAG]['content'][k]));
 
 					}
 
+				}
+
+			}else
+
+			/*
+			trying to make content if OBJECT
+			*/
+			if(template[TAG]['content'] instanceof Object){
+
+				/*
+				if object in content is Synthes object
+				*/
+				if(template[TAG]['content'].isSynthes && template[TAG]['content'].node){
+
+					node.appendChild(template[TAG]['content'].node);
+
 				}else{
 
-					node.appendChild(createNode(template[TAG]['content']));
+					/*
+					if object in content is assoc-array template
+					*/
+					let n = Object.keys(template[TAG]['content'])[0];
 
+					if(template[TAG]['content'][n] instanceof Object){
+
+						for(let t in template[TAG]['content']){
+
+							node.appendChild(createNode({ [t]: template[TAG]['content'][t] })); //some magic ;)
+
+						}
+
+					}else{
+
+						node.appendChild(createNode(template[TAG]['content']));
+
+					}
+					
 				}
-				
+
+				return node;
+
+			}else
+
+			/*
+			trying to make content if STRING
+			*/
+			if(typeof template[TAG]['content'] == 'string'){
+
+				node.innerHTML = template[TAG]['content'];
+
 			}
-
-			return node;
-
-		}else
-
-		/*
-		trying to make content if STRING
-		*/
-		if(typeof template[TAG]['content'] == 'string'){
-
-			node.innerHTML = template[TAG]['content'];
 
 		}
 

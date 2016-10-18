@@ -123,7 +123,7 @@
                     return i;
                 }
                 if (e[o] instanceof Object) for (var s in e[o]) "content" != s && (e[o][s] instanceof Object || e[o][s] instanceof Array ? e[o][s].isSynthes && e[o][s].node ? i.appendChild(e[o][s].node) : i.appendChild(t(r({}, s, e[o][s]))) : "string" == typeof e[o][s] && (l["default"].indexOf(s) + 1 ? i.appendChild(t(r({}, s, e[o][s]))) : i.setAttribute(s, e[o][s])));
-                if (e[o].content instanceof Array) for (var a in e[o].content) e[o].content[a].isSynthes && e[o].content[a].node ? i.appendChild(e[o].content[a].node) : i.appendChild(t(e[o].content[a])); else {
+                if (e[o].content) if (e[o].content instanceof Array) for (var a in e[o].content) e[o].content[a].isSynthes && e[o].content[a].node ? i.appendChild(e[o].content[a].node) : i.appendChild(t(e[o].content[a])); else {
                     if (e[o].content instanceof Object) {
                         if (e[o].content.isSynthes && e[o].content.node) i.appendChild(e[o].content.node); else {
                             var u = Object.keys(e[o].content)[0];

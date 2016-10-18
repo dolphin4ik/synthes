@@ -16,7 +16,6 @@ let Synthes = function(template = null, sandbox = null){
 	SHADOW.string = null;
 	SHADOW.softDelete = false;
 	SHADOW.isRendered = false;
-
 	SHADOW.softDeleteDisplay = (SHADOW.node)?((SHADOW.node.style.display.length == 0)? 'block' : SHADOW.node.style.display): 'block';
 	
 	if(SHADOW.node){
