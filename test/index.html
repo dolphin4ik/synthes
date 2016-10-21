@@ -18,7 +18,7 @@ var templates = [
 	},
 
 	{
-		'type': 'node : [child, child..]',
+		'type': 'node : [ child, child.. ]',
 		'template': {
 			'div': [ {'span':'span1'}, {'span':'span2'} ]
 		},
@@ -26,10 +26,10 @@ var templates = [
 	},
 
 	{
-		'type': 'node : {attr:"", node:{}, node:[], node:""}',
+		'type': 'node : { @attr:"", node:{}, node:[], node:"" }',
 		'template': {
 			'div': {
-				'class': 'alfa',
+				'@class': 'alfa',
 				'div': { 'span': 'alfa span' },
 				'ul': [
 					{ 'li': 'li 1' },

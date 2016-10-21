@@ -71,15 +71,15 @@ const renderer = function(template = null){
 					//child or attribute
 					}else if(typeof template[TAG][k] == 'string'){
 
-						if( !!( TAGS.indexOf(k)+1 ) ){
+						//if it can be a node. Attributes must start with @
+						if( k[0] != '@' ){
 
-							//if it can be a node. Like nodes in TAGS
 							node.appendChild(createNode({ [k]: template[TAG][k] })); //some magic ;)
 
 						}else{
 
 							//totaly its a attribute
-							node.setAttribute(k, template[TAG][k]);
+							node.setAttribute(k.slice(1), template[TAG][k]);
 
 						}
 

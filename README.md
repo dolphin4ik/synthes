@@ -100,6 +100,20 @@ let template = {
 };
 ```
 
+What about mixed template?
+
+```javascript
+let template = {
+	'node': { //Your DOM Node
+		'@attribute': 'attribute value',
+		'@attribute2': 'attribute2 value',
+		...,
+		'span': 'some string content'
+	}
+};
+```
+U can see @ symbol to use string attributes alongside string nodes
+
 Simple template:
 
 ```javascript

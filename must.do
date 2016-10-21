@@ -4,3 +4,4 @@ data binding
 +rename delete -> remove
 onRender closure
 add "$" to tag to make own tags like "$my-own-tag"
+add server-side renderer
