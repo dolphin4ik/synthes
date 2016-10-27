@@ -87,14 +87,9 @@
             }), o;
         };
         n["default"] = d, e.exports = n["default"];
-    }, function(e, n, t) {
+    }, function(e, n) {
         "use strict";
-        function o(e) {
-            return e && e.__esModule ? e : {
-                "default": e
-            };
-        }
-        function r(e, n, t) {
+        function t(e, n, t) {
             return n in e ? Object.defineProperty(e, n, {
                 value: t,
                 enumerable: !0,
@@ -105,29 +100,29 @@
         Object.defineProperty(n, "__esModule", {
             value: !0
         });
-        var i = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+        var o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
             return typeof e;
         } : function(e) {
             return e && "function" == typeof Symbol && e.constructor === Symbol ? "symbol" : typeof e;
-        }, d = t(2), l = (o(d), function() {
+        }, r = function() {
             var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0];
-            if ("object" != ("undefined" == typeof e ? "undefined" : i(e))) return null;
-            var n = function t() {
+            if ("object" != ("undefined" == typeof e ? "undefined" : o(e))) return null;
+            var n = function r() {
                 var e = arguments.length <= 0 || void 0 === arguments[0] ? null : arguments[0], n = function() {
                     var e = arguments.length <= 0 || void 0 === arguments[0] ? "span" : arguments[0];
                     return document.createElement(e);
                 }, o = Object.keys(e)[0], i = n(o);
                 if ("string" == typeof e[o] || null == e[o]) return i.innerHTML = e[o] || "", i;
                 if (e[o] instanceof Array) {
-                    for (var d in e[o]) e[o][d].isSynthes && e[o][d].node ? i.appendChild(e[o][d].node) : i.appendChild(t(e[o][d]));
+                    for (var d in e[o]) e[o][d].isSynthes && e[o][d].node ? i.appendChild(e[o][d].node) : i.appendChild(r(e[o][d]));
                     return i;
                 }
-                if (e[o] instanceof Object) for (var l in e[o]) "content" != l && (e[o][l] instanceof Object || e[o][l] instanceof Array ? e[o][l].isSynthes && e[o][l].node ? i.appendChild(e[o][l].node) : i.appendChild(t(r({}, l, e[o][l]))) : "string" == typeof e[o][l] && ("@" != l[0] ? i.appendChild(t(r({}, l, e[o][l]))) : i.setAttribute(l.slice(1), e[o][l])));
-                if (e[o].content) if (e[o].content instanceof Array) for (var s in e[o].content) e[o].content[s].isSynthes && e[o].content[s].node ? i.appendChild(e[o].content[s].node) : i.appendChild(t(e[o].content[s])); else {
+                if (e[o] instanceof Object) for (var l in e[o]) "content" != l && (e[o][l] instanceof Object || e[o][l] instanceof Array ? e[o][l].isSynthes && e[o][l].node ? i.appendChild(e[o][l].node) : i.appendChild(r(t({}, l, e[o][l]))) : "string" == typeof e[o][l] && ("@" == l[0] ? i.appendChild(r(t({}, l.slice(1), e[o][l]))) : i.setAttribute(l, e[o][l])));
+                if (e[o].content) if (e[o].content instanceof Array) for (var s in e[o].content) e[o].content[s].isSynthes && e[o].content[s].node ? i.appendChild(e[o].content[s].node) : i.appendChild(r(e[o].content[s])); else {
                     if (e[o].content instanceof Object) {
                         if (e[o].content.isSynthes && e[o].content.node) i.appendChild(e[o].content.node); else {
-                            var a = Object.keys(e[o].content)[0];
-                            if (e[o].content[a] instanceof Object) for (var u in e[o].content) i.appendChild(t(r({}, u, e[o].content[u]))); else i.appendChild(t(e[o].content));
+                            var u = Object.keys(e[o].content)[0];
+                            if (e[o].content[u] instanceof Object) for (var f in e[o].content) i.appendChild(r(t({}, f, e[o].content[f]))); else i.appendChild(r(e[o].content));
                         }
                         return i;
                     }
@@ -136,14 +131,7 @@
                 return i;
             };
             return n(e);
-        });
-        n["default"] = l, e.exports = n["default"];
-    }, function(e, n) {
-        "use strict";
-        Object.defineProperty(n, "__esModule", {
-            value: !0
-        });
-        var t = [ "a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "datalist", "dd", "del", "details", "dfn", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "map", "mark", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr" ];
-        n["default"] = t, e.exports = n["default"];
+        };
+        n["default"] = r, e.exports = n["default"];
     } ]);
 });

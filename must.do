@@ -5,3 +5,4 @@ data binding
 onRender closure
 add "$" to tag to make own tags like "$my-own-tag"
 add server-side renderer
+add "node.class" for fast writing template

@@ -105,14 +105,14 @@ What about mixed template?
 ```javascript
 let template = {
 	'node': { //Your DOM Node
-		'@attribute': 'attribute value',
-		'@attribute2': 'attribute2 value',
+		'attribute': 'attribute value',
+		'attribute2': 'attribute2 value',
 		...,
-		'span': 'some string content'
+		'@span': 'some string content'
 	}
 };
 ```
-U can see @ symbol to use string attributes alongside string nodes
+U can see @ symbol to use string nodes alongside string attributes
 
 Simple template:
 

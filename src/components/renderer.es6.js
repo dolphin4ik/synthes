@@ -1,6 +1,5 @@
 /*
 */
-import TAGS from './tags';
 
 const renderer = function(template = null){
 
@@ -72,14 +71,14 @@ const renderer = function(template = null){
 					}else if(typeof template[TAG][k] == 'string'){
 
 						//if it can be a node. Attributes must start with @
-						if( k[0] != '@' ){
+						if( k[0] == '@' ){
 
-							node.appendChild(createNode({ [k]: template[TAG][k] })); //some magic ;)
+							node.appendChild(createNode({ [k.slice(1)]: template[TAG][k] })); //some magic ;)
 
 						}else{
 
 							//totaly its a attribute
-							node.setAttribute(k.slice(1), template[TAG][k]);
+							node.setAttribute(k, template[TAG][k]);
 
 						}
 
