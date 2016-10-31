@@ -108,11 +108,11 @@ let template = {
 		'attribute': 'attribute value',
 		'attribute2': 'attribute2 value',
 		...,
-		'@span': 'some string content'
+		'$span': 'some string content'
 	}
 };
 ```
-U can see @ symbol to use string nodes alongside string attributes
+U can see "$" symbol to use string nodes alongside string attributes
 
 Simple template:
 
@@ -128,6 +128,14 @@ let template = {
 			'span': 'Hello from span in p in div ;)'
 		}
 	}
+};
+```
+
+Node with classes:
+
+```javascript
+let template = {
+	'div.my-class.super-class': 'hello synthes'
 };
 ```
 

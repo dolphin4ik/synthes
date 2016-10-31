@@ -1,5 +1,5 @@
-/*
-*/
+import tagparser from './tagparser.es6';
+import addclasslist from './addclasslist.es6';
 
 const renderer = function(template = null){
 
@@ -8,10 +8,12 @@ const renderer = function(template = null){
 	const createNode = function(template = null){
 
 		const n = (node = 'span') => document.createElement(node);
-		
-		const TAG = Object.keys(template)[0];
 
-		const node = n(TAG);
+		const TAG = Object.keys(template)[0];
+		
+		const { NODE, classlist } = tagparser( TAG );
+
+		const node = n(NODE);
 
 		/*
 		trying to make node from {node:content} template
@@ -20,7 +22,7 @@ const renderer = function(template = null){
 
 			node.innerHTML = template[TAG] || '';
 
-			return node;
+			return addclasslist(node, classlist);
 
 		};
 
@@ -43,7 +45,7 @@ const renderer = function(template = null){
 
 			}
 
-			return node;
+			return addclasslist(node, classlist);
 
 		/*
 		trying to make node from {node:{ attr:'',.. node:{},.. node:[],.. node:'' }} template
@@ -71,7 +73,7 @@ const renderer = function(template = null){
 					}else if(typeof template[TAG][k] == 'string'){
 
 						//if it can be a node. Attributes must start with @
-						if( k[0] == '@' ){
+						if( k[0] == '$' ){
 
 							node.appendChild(createNode({ [k.slice(1)]: template[TAG][k] })); //some magic ;)
 
@@ -151,7 +153,7 @@ const renderer = function(template = null){
 					
 				}
 
-				return node;
+				return addclasslist(node, classlist);
 
 			}else
 
@@ -165,8 +167,8 @@ const renderer = function(template = null){
 			}
 
 		}
-
-		return node;
+		
+		return addclasslist(node, classlist);
 
 	};
 

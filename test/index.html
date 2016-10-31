@@ -26,16 +26,16 @@ var templates = [
 	},
 
 	{
-		'type': 'node : { attr:"", node:{}, node:[], @node:"" }',
+		'type': 'node : { attr:"", node:{}, node:[], $node:"" }',
 		'template': {
 			'div': {
 				'class': 'alfa',
-				'div': { '@span': 'alfa span' },
+				'div': { '$span': 'alfa span' },
 				'ul': [
 					{ 'li': 'li 1' },
 					{ 'li': 'li 2' }
 				],
-				'@p': 'some p text'
+				'$p': 'some p text'
 			}
 		},
 		'result': '<div class="alfa"><div><span>alfa span</span></div><ul><li>li 1</li><li>li 2</li></ul><p>some p text</p></div>'
@@ -83,6 +83,14 @@ var templates = [
 			}
 		},
 		'result': '<div><span>foo</span><span>bar</span></div>'
+	},
+
+	{
+		'type': 'node.class.super-class : "some text"',
+		'template': {
+			'span.class.super-class': 'some text'
+		},
+		'result': '<span class="class super-class">some text</span>'
 	}
 
 
