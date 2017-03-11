@@ -1,8 +1,3 @@
-/*
-Synthes
-author: denyzhirkov@yandex.ru, @dolphin4ik 
-*/
-
 import renderer from './components/renderer.es6';
 
 let Synthes = function(template = null, sandbox = null){
